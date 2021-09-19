@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
 }
+
 .grid-item-1 {
     background-color: #F9F3DF;
     width: 100%;
