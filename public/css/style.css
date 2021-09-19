@@ -52,3 +52,7 @@
 .grid3text h2{
     font-size: 25px;
 }
+
+table, th, td {
+    border: 1px solid black;
+}

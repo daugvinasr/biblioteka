@@ -15,5 +15,10 @@ use App\Http\Controllers\BorrowController;
 */
 
 Route::get('/', [BorrowController::class, 'show']);
+Route::get('/authors', [BorrowController::class, 'showAuthors']);
+Route::get('/books', [BorrowController::class, 'showBooks']);
+Route::get('/borrows', [BorrowController::class, 'showBorrows']);
+Route::get('/students', [BorrowController::class, 'showStudents']);
+Route::get('/types', [BorrowController::class, 'showTypes']);
 
 
