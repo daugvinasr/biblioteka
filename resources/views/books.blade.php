@@ -4,20 +4,20 @@
     <div class="grid3text">
         <table class="displayTable">
             <tr>
-                <th>ID</th>
                 <th>Pavadinimas</th>
                 <th>Puslapių skaičius</th>
                 <th>Tipas</th>
-                <th>Autorius</th>
+                <th>Vardas</th>
+                <th>Pavardė</th>
             </tr>
 
-            @foreach($booksData as $book)
+            @foreach ($booksData as $book)
                 <tr>
-                    <td>{{$book-> id_books}}</td>
-                    <td>{{$book-> name}}</td>
-                    <td>{{$book-> pageCount}}</td>
-                    <td>{{$book-> fk_typesid}}</td>
-                    <td>{{$book-> fk_authorsid}}</td>
+                    <td>{{ $book->title }}</td>
+                    <td>{{ $book->pageCount }}</td>
+                    <td>{{ $book->type }}</td>
+                    <td>{{ $book->name }}</td>
+                    <td>{{ $book->surname }}</td>
                 </tr>
             @endforeach
         </table>

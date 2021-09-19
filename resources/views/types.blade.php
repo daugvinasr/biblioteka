@@ -8,10 +8,10 @@
                 <th>Pavadinimas</th>
             </tr>
 
-            @foreach($typesData as $type)
+            @foreach ($typesData as $type)
                 <tr>
-                    <td>{{$type-> id_types}}</td>
-                    <td>{{$type-> name}}</td>
+                    <td>{{ $type->id_types }}</td>
+                    <td>{{ $type->name }}</td>
                 </tr>
             @endforeach
         </table>

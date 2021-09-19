@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +14,11 @@ use App\Http\Controllers\BorrowController;
 |
 */
 
-Route::get('/', [BorrowController::class, 'show']);
-Route::get('/authors', [BorrowController::class, 'showAuthors']);
-Route::get('/books', [BorrowController::class, 'showBooks']);
-Route::get('/borrows', [BorrowController::class, 'showBorrows']);
-Route::get('/students', [BorrowController::class, 'showStudents']);
-Route::get('/types', [BorrowController::class, 'showTypes']);
+Route::get('/', [LibraryController::class, 'show']);
+Route::get('/authors', [LibraryController::class, 'showAuthors']);
+Route::get('/books', [LibraryController::class, 'showBooks']);
+Route::get('/borrows', [LibraryController::class, 'showBorrows']);
+Route::get('/students', [LibraryController::class, 'showStudents']);
+Route::get('/types', [LibraryController::class, 'showTypes']);
 
 

@@ -11,13 +11,13 @@
                 <th>Knyga</th>
             </tr>
 
-            @foreach($borrowsData as $borrow)
+            @foreach ($borrowsData as $borrow)
                 <tr>
-                    <td>{{$borrow-> id_borrows}}</td>
-                    <td>{{$borrow-> takenDate}}</td>
-                    <td>{{$borrow-> broughtDate}}</td>
-                    <td>{{$borrow-> fk_studentsid}}</td>
-                    <td>{{$borrow-> fk_booksid}}</td>
+                    <td>{{ $borrow->id_borrows }}</td>
+                    <td>{{ $borrow->takenDate }}</td>
+                    <td>{{ $borrow->broughtDate }}</td>
+                    <td>{{ $borrow->fk_studentsid }}</td>
+                    <td>{{ $borrow->fk_booksid }}</td>
                 </tr>
             @endforeach
         </table>
