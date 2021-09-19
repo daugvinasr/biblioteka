@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BorrowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('start');
-});
+Route::get('/', [BorrowController::class, 'show']);
 
 
