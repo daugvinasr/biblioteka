@@ -22,4 +22,14 @@
             @endforeach
         </table>
     </div>
+
+    <div style="padding: 15px">
+        {{ $studentsData -> links() }}
+        <style>
+            .w-5{
+                height: 10px;
+            }
+        </style>
+    </div>
+
 @endsection
