@@ -25,5 +25,7 @@ Route::get('/books', [BooksController::class, 'showBooks']);
 Route::get('/borrows', [BorrowsController::class, 'showBorrows']);
 Route::get('/students', [StudentsController::class, 'showStudents']);
 Route::get('/types', [TypesController::class, 'showTypes']);
+Route::POST('/authors', [AuthorsController::class, 'putAuthors']);
+Route::get('/authors/{id}', [AuthorsController::class, 'deleteAuthors']);
 
 
