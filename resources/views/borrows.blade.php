@@ -1,25 +1,23 @@
-@extends('layouts.layout')
+@extends('layouts.layoutTables')
 
-@section('content')
-    <div class="grid3text">
-        <table class="displayTable">
-            <tr>
-                <th>Paėmimo data</th>
-                <th>Pridavimo data</th>
-                <th>Paėmusio vardas</th>
-                <th>Paėmusio pavardė</th>
-                <th>Knyga</th>
-            </tr>
-
-            @foreach ($borrowsData as $borrow)
-                <tr>
-                    <td>{{ $borrow->takenDate }}</td>
-                    <td>{{ $borrow->broughtDate }}</td>
-                    <td>{{ $borrow->name }}</td>
-                    <td>{{ $borrow->surname }}</td>
-                    <td>{{ $borrow->title}}</td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
+@section('tableNames')
+    <th class="px-4 py-3">Paėmimo data</th>
+    <th class="px-4 py-3">Pridavimo data</th>
+    <th class="px-4 py-3">Paėmusio vardas</th>
+    <th class="px-4 py-3">Paėmusio pavardė</th>
+    <th class="px-4 py-3">Knyga</th>
 @endsection
+
+@section('tableData')
+    @foreach ($borrowsData as $borrow)
+        <tr class="text-gray-700">
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->takenDate }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->broughtDate }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->name }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->surname }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->title }}</td>
+        </tr>
+    @endforeach
+@endsection
+
+

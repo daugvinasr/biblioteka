@@ -1,25 +1,22 @@
-@extends('layouts.layout')
+@extends('layouts.layoutTables')
 
-@section('content')
-    <div class="grid3text">
-        <table class="displayTable">
-            <tr>
-                <th>Pavadinimas</th>
-                <th>Puslapių skaičius</th>
-                <th>Tipas</th>
-                <th>Vardas</th>
-                <th>Pavardė</th>
-            </tr>
-
-            @foreach ($booksData as $book)
-                <tr>
-                    <td>{{ $book->title }}</td>
-                    <td>{{ $book->pageCount }}</td>
-                    <td>{{ $book->type }}</td>
-                    <td>{{ $book->name }}</td>
-                    <td>{{ $book->surname }}</td>
-                </tr>
-            @endforeach
-        </table>
-    </div>
+@section('tableNames')
+    <th class="px-4 py-3">Pavadinimas</th>
+    <th class="px-4 py-3">Puslapių skaičius</th>
+    <th class="px-4 py-3">Tipas</th>
+    <th class="px-4 py-3">Vardas</th>
+    <th class="px-4 py-3">Pavardė</th>
 @endsection
+
+@section('tableData')
+    @foreach ($booksData as $book)
+        <tr class="text-gray-700">
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $book->title }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $book->pageCount }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $book->type }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $book->name }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border">{{ $book->surname }}</td>
+        </tr>
+    @endforeach
+@endsection
+

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="grid3text">
+    <div>
         <h2>Lorem ipsum dolor</h2>
         <p>Molestias quod optio perspiciatis vitae accusamus voluptatem laudantium maiores at nulla, distinctio ad commodi
             aut id debitis rerum. Tempore rerum beatae, laboriosam expedita esse sit ipsa, illo ipsum accusantium qui earum
