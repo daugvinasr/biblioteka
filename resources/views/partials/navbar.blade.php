@@ -1,4 +1,4 @@
-<div class="bg-yellow-700 mb-8 shadow">
+<div class="bg-yellow-700 mb-8 shadow-lg ">
     <div class="container mx-auto">
         <div class="flex items-center">
             <a href="/biblioteka/public/" class="block px-5 py-4 text-white {{ session('activeNav') == 'home' ? 'bg-yellow-800' : null }}">Pagrindinis</a>
