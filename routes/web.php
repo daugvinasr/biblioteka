@@ -26,13 +26,17 @@ Route::get('/borrows', [BorrowsController::class, 'showBorrows']);
 Route::get('/students', [StudentsController::class, 'showStudents']);
 Route::get('/types', [TypesController::class, 'showTypes']);
 
-Route::get('/books', [BooksController::class, 'showBooks']);
-Route::Post('/books', [BooksController::class, 'putBooks']);
-Route::get('/books/{id}', [BooksController::class, 'deleteBooks']);
-
 Route::get('/authors', [AuthorsController::class, 'showAuthors']);
 Route::Post('/authors', [AuthorsController::class, 'putAuthors']);
 Route::get('/authors/{id}', [AuthorsController::class, 'deleteAuthors']);
 Route::get('/authors/edit/{id}', [AuthorsController::class, 'showForEditAuthors']);
 Route::Post('/authors/edit/{id}', [AuthorsController::class, 'editAuthors']);
+
+Route::get('/books', [BooksController::class, 'showBooks']);
+Route::Post('/books', [BooksController::class, 'putBooks']);
+Route::get('/books/{id}', [BooksController::class, 'deleteBooks']);
+Route::get('/books/edit/{id}', [BooksController::class, 'showForEditBooks']);
+Route::Post('/books/edit/{id}', [BooksController::class, 'editBooks']);
+
+
 

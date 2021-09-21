@@ -29,4 +29,28 @@ class BooksController extends Controller
         books::where('id_books','=',$id)->delete();
         return redirect('/books');
     }
+
+    public function showForEditBooks($id)
+    {
+        $query = 'SELECT * FROM books WHERE id_books = '. $id;
+        $booksData = DB::select($query);
+
+        $queryForRealTypeNames = "SELECT types.name as type, authors.name as name, types.id_types, authors.id_authors FROM books JOIN authors on books.fk_authorsid = authors.id_authors JOIN types on books.fk_typesid = types.id_types WHERE books.id_books = " . $id;
+        $realNames = DB::select($queryForRealTypeNames);
+
+        $bbb = 'SELECT authors.id_authors, authors.name FROM authors WHERE NOT authors.id_authors = '. $realNames[0] -> id_authors;
+        $namesData = DB::select($bbb);
+
+        $aa = "SELECT types.id_types, types.name FROM types WHERE NOT types.id_types = " . $realNames[0] -> id_types;
+        $typesData = DB::select($aa);
+        return view('booksEdit', ['booksData' => $booksData, 'typesData' => $typesData, 'namesData' => $namesData, 'realNames' => $realNames]);
+    }
+
+    public function editBooks()
+    {
+        $querry = 'UPDATE books SET name = ' . "'" . request('name') . "'" . ",". "pageCount = " . "'" . request('pageCount') . "'" . ",". "fk_typesid = " . "'" . request('fk_typesid') . "'" . ",". "fk_authorsid =" . "'" . request('fk_authorsid') . "'" . " ". ' WHERE id_books = ' . request('id_books');
+        DB::update($querry);
+        return redirect('/books');
+    }
+
 }
