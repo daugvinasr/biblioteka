@@ -22,10 +22,14 @@ use App\Http\Controllers\EditsController;
 
 Route::get('/main', [ShowController::class, 'show']);
 Route::Post('/main', [ShowController::class, 'show']);
-Route::get('/books', [BooksController::class, 'showBooks']);
 Route::get('/borrows', [BorrowsController::class, 'showBorrows']);
 Route::get('/students', [StudentsController::class, 'showStudents']);
 Route::get('/types', [TypesController::class, 'showTypes']);
+
+Route::get('/books', [BooksController::class, 'showBooks']);
+Route::Post('/books', [BooksController::class, 'putBooks']);
+Route::get('/books/{id}', [BooksController::class, 'deleteBooks']);
+
 Route::get('/authors', [AuthorsController::class, 'showAuthors']);
 Route::Post('/authors', [AuthorsController::class, 'putAuthors']);
 Route::get('/authors/{id}', [AuthorsController::class, 'deleteAuthors']);

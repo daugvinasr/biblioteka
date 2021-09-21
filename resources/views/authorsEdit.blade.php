@@ -8,10 +8,8 @@
             <h1>Autoriaus redagavimas:</h1>
             <h2>ID:</h2>
             <input value="{{$authorsData[0] -> id_authors}}" class="shadow-lg bg-gray-100" type="text" name="id_authors" readonly>
-            <h2>Vardas:</h2>
+            <h2>Vardas Pavardė:</h2>
             <input value="{{$authorsData[0] -> name}}" class="shadow-lg bg-gray-100" type="text" name="name">
-            <h2>Pavardė:</h2>
-            <input value="{{$authorsData[0] -> surname}}" class="shadow-lg bg-gray-100" type="text" name="surname">
             <input class="shadow-lg bg-yellow-300 rounded-full py-1 px-2" type="submit" value="Patvirtinti">
         </form>
     </div>

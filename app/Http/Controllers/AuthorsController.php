@@ -18,10 +18,10 @@ class AuthorsController extends Controller
 
     public function putAuthors()
     {
-        DB::insert( 'INSERT INTO `authors` (`name`, `surname`) VALUES (?, ?)',[request('name'),request('surname')]);
+        DB::insert( 'INSERT INTO `authors` (`name`) VALUES (?)',[request('name')]);
         $authorsData = authors::all();
         Session::put('activeNav','authors');
-        return view('authors', ['authorsData' => $authorsData]);
+        return redirect('/authors');
     }
 
     public function deleteAuthors($id)
@@ -37,9 +37,9 @@ class AuthorsController extends Controller
         return view('authorsEdit',['authorsData' => $authorsData]);
     }
 
-    public function editAuthors($id)
+    public function editAuthors()
     {
-        $querry = 'UPDATE authors SET name = ' . "'" . request('name') . "'" . ', ' . 'surname = ' . "'" . request('surname') . "'" . ' WHERE id_authors = ' . request('id_authors');
+        $querry = 'UPDATE authors SET name = ' . "'" . request('name') . "'" . ' WHERE id_authors = ' . request('id_authors');
         DB::update($querry);
         return redirect('/authors');
     }

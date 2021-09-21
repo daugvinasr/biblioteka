@@ -3,8 +3,7 @@
 @section('tableNames')
     <th class="px-4 py-3">Paėmimo data</th>
     <th class="px-4 py-3">Pridavimo data</th>
-    <th class="px-4 py-3">Paėmusio vardas</th>
-    <th class="px-4 py-3">Paėmusio pavardė</th>
+    <th class="px-4 py-3">Paėmusio vardas pavardė</th>
     <th class="px-4 py-3">Knyga</th>
 @endsection
 
@@ -14,7 +13,6 @@
             <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->takenDate }}</td>
             <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->broughtDate }}</td>
             <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->name }}</td>
-            <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->surname }}</td>
             <td class="px-4 py-3 text-ms font-semibold border">{{ $borrow->title }}</td>
         </tr>
     @endforeach
