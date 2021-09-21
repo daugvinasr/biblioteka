@@ -17,7 +17,7 @@ class AuthorsController extends Controller
     }
 
     public function putAuthors()
-    {   error_log('penisssssssssssssssss authors');
+    {
         DB::insert( 'INSERT INTO `authors` (`name`, `surname`) VALUES (?, ?)',[request('name'),request('surname')]);
         $authorsData = authors::all();
         Session::put('activeNav','authors');
@@ -29,6 +29,22 @@ class AuthorsController extends Controller
         authors::where('id_authors','=',$id)->delete();
         return redirect('/authors');
     }
+
+    public function showForEditAuthors($id)
+    {
+        $querry = 'SELECT * FROM authors WHERE id_authors = '. $id;
+        $authorsData = DB::select($querry);
+        return view('authorsEdit',['authorsData' => $authorsData]);
+    }
+
+    public function editAuthors($id)
+    {
+        $querry = 'UPDATE authors SET name = ' . "'" . request('name') . "'" . ', ' . 'surname = ' . "'" . request('surname') . "'" . ' WHERE id_authors = ' . request('id_authors');
+        DB::update($querry);
+        return redirect('/authors');
+    }
+
+
 
 
 

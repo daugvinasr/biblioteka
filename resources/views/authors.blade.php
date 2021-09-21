@@ -15,10 +15,11 @@
         <td class="px-4 py-3 text-ms font-semibold border">{{ $author->surname }}</td>
         <td class="px-4 text-ms font-semibold border text-center ">
             <a class="shadow-lg bg-red-300 rounded-full py-2 px-2  " href="authors/{{$author->id_authors}}">TRINTI</a>
-            <a class="shadow-lg bg-yellow-300 rounded-full py-2 px-2" href="edits/authors/{{$author->id_authors}}">REDAGUOTI</a>
+            <a class="shadow-lg bg-yellow-300 rounded-full py-2 px-2" href="authors/edit/{{$author->id_authors}}">REDAGUOTI</a>
         </td>
     </tr>
     @endforeach
+
 @endsection
 
 

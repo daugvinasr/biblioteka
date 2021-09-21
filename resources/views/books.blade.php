@@ -20,3 +20,7 @@
     @endforeach
 @endsection
 
+@section('inputFields')
+
+@endsection
+

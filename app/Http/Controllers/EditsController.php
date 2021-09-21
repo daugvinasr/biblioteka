@@ -12,7 +12,6 @@ class EditsController extends Controller
 
     public function edits($tableName,$id)
     {
-        error_log('vaaarau per edits');
         $idName = "id_" . $tableName;
         $querry = 'SELECT * FROM ' . $tableName . ' WHERE ' . $idName . ' = ' . $id;
         $editsData = DB::select($querry);
@@ -47,7 +46,6 @@ class EditsController extends Controller
         $querryEdit = $querryEdit . ' WHERE ' . $idName . ' = ' . $reikiamasID;
         DB::update($querryEdit);
         Session::put('activeNav','edits');
-        error_log('edittttttttttttt penis');
         return redirect('/'.$tableName);
     }
 }
