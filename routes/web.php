@@ -19,7 +19,7 @@ use App\Http\Controllers\TypesController;
 |
 */
 
-Route::get('/', [ShowController::class, 'show']);
+Route::get('/main', [ShowController::class, 'show']);
 Route::get('/authors', [AuthorsController::class, 'showAuthors']);
 Route::get('/books', [BooksController::class, 'showBooks']);
 Route::get('/borrows', [BorrowsController::class, 'showBorrows']);
