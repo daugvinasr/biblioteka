@@ -17,8 +17,8 @@ class AuthorsController extends Controller
     }
 
     public function putAuthors()
-    {
-        DB::insert('INSERT INTO `authors` (`name`, `surname`) VALUES (?, ?)',[request('name'),request('surname')]);
+    {   error_log('penisssssssssssssssss authors');
+        DB::insert( 'INSERT INTO `authors` (`name`, `surname`) VALUES (?, ?)',[request('name'),request('surname')]);
         $authorsData = authors::all();
         Session::put('activeNav','authors');
         return view('authors', ['authorsData' => $authorsData]);

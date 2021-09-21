@@ -7,6 +7,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TypesController;
+use App\Http\Controllers\EditsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,14 @@ use App\Http\Controllers\TypesController;
 */
 
 Route::get('/main', [ShowController::class, 'show']);
+Route::POST('/main', [ShowController::class, 'show']);
 Route::get('/authors', [AuthorsController::class, 'showAuthors']);
 Route::get('/books', [BooksController::class, 'showBooks']);
+Route::POST('/authors', [AuthorsController::class, 'putAuthors']);
 Route::get('/borrows', [BorrowsController::class, 'showBorrows']);
 Route::get('/students', [StudentsController::class, 'showStudents']);
 Route::get('/types', [TypesController::class, 'showTypes']);
-Route::POST('/authors', [AuthorsController::class, 'putAuthors']);
 Route::get('/authors/{id}', [AuthorsController::class, 'deleteAuthors']);
-
+Route::POST('/edits/{tableName}/{id}', [EditsController::class, 'putEdits']);
+Route::get('/edits/{tableName}/{id}', [EditsController::class, 'edits']);
 
