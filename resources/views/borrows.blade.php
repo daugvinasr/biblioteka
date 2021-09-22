@@ -13,8 +13,8 @@
         <tr class="text-gray-700">
             <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->takenDate }}</td>
             <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->broughtDate }}</td>
-            <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->name }}</td>
-            <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->title }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->studentIdToText->name }}</td>
+            <td class="px-4 py-3 text-ms font-semibold border text-center">{{ $borrow->bookIdToText->name }}</td>
             <td class="px-4 text-ms font-semibold border text-center ">
                 <a class="shadow-lg bg-red-300 rounded-full py-2 px-2  " href="borrows/{{$borrow->id_borrows}}">TRINTI</a>
                 <a class="shadow-lg bg-yellow-300 rounded-full py-2 px-2" href="borrows/edit/{{$borrow->id_borrows}}">REDAGUOTI</a>

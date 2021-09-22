@@ -10,11 +10,14 @@ use App\Models\authors;
 class books extends Model
 {
     use HasFactory;
-    public function author()
+
+    public $timestamps = false;
+
+    public function authorIdToText()
     {
         return $this->belongsTo(authors::class, 'fk_authorsid', 'id_authors');
     }
-    public function type()
+    public function typeIdToText()
     {
         return $this->belongsTo(types::class, 'fk_typesid', 'id_types');
     }

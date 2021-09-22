@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\authors;
-use http\Client\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class AuthorsController extends Controller
@@ -12,6 +10,7 @@ class AuthorsController extends Controller
     public function showAuthors()
     {
         $authorsData = authors::all();
+
         Session::put('activeNav','authors');
         return view('authors', ['authorsData' => $authorsData]);
     }
@@ -21,8 +20,11 @@ class AuthorsController extends Controller
         request()->validate([
             'name' => 'required|max:254'
         ]);
-        DB::insert( 'INSERT INTO `authors` (`name`) VALUES (?)',[request('name')]);
-        $authorsData = authors::all();
+
+        $authors = new authors();
+        $authors->name = request('name');
+        $authors->save();
+
         Session::put('activeNav','authors');
         return redirect('/authors');
     }
@@ -35,8 +37,7 @@ class AuthorsController extends Controller
 
     public function showForEditAuthors($id)
     {
-        $querry = 'SELECT * FROM authors WHERE id_authors = '. $id;
-        $authorsData = DB::select($querry);
+        $authorsData = authors::where('id_authors','=',$id)->get();
         return view('authorsEdit',['authorsData' => $authorsData]);
     }
 
@@ -45,8 +46,9 @@ class AuthorsController extends Controller
         request()->validate([
             'name' => 'required|max:254'
         ]);
-        $querry = 'UPDATE authors SET name = ' . "'" . request('name') . "'" . ' WHERE id_authors = ' . request('id_authors');
-        DB::update($querry);
+
+        $authorsData = authors::where('id_authors', request('id_authors'));
+        $authorsData->update(['name' => request('name')]);
         return redirect('/authors');
     }
 

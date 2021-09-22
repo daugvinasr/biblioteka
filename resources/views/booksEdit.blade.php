@@ -28,7 +28,7 @@
                     <label>Tipas:</label>
                     <p></p>
                     <select name="fk_typesid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$fillInData[0] -> fk_typesid}}">{{$firstDropDown[0] -> type}}</option>
+                        <option value="{{$fillInData[0] -> fk_typesid}}">{{$fillInData[0] -> typeIdToText -> name}}</option>
                         @foreach($TypesNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_types}}">{{$type->name}}</option>
                         @endforeach
@@ -39,7 +39,7 @@
                     <label>Autorius:</label>
                     <p></p>
                     <select name="fk_authorsid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$fillInData[0] -> fk_authorsid}}">{{$firstDropDown[0] -> name}}</option>
+                        <option value="{{$fillInData[0] -> fk_authorsid}}">{{$fillInData[0] -> authorIdToText -> name}}</option>
                         @foreach($AuthorsNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_authors}}">{{$type->name}}</option>
                         @endforeach

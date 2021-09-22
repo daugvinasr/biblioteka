@@ -27,7 +27,7 @@
                     <label>Paėmusio vardas pavardė:</label>
                     <p></p>
                     <select name="fk_studentsid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$fillInData[0] -> fk_studentsid}}">{{$firstDropDown[0] -> name}}</option>
+                        <option value="{{$fillInData[0] -> fk_studentsid}}">{{$fillInData[0] -> studentIdToText -> name}}</option>
                         @foreach($StudentNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_students}}">{{$type->name}}</option>
                         @endforeach
@@ -38,7 +38,7 @@
                     <label>Knygos pavadinimas:</label>
                     <p></p>
                     <select name="fk_booksid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$fillInData[0] -> fk_booksid}}">{{$firstDropDown[0] -> title}}</option>
+                        <option value="{{$fillInData[0] -> fk_booksid}}">{{$fillInData[0] -> bookIdToText -> name}}</option>
                         @foreach($BookNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_books}}">{{$type->name}}</option>
                         @endforeach

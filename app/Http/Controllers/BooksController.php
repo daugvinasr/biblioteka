@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\authors;
 use App\Models\books;
-use Illuminate\Support\Facades\DB;
+use App\Models\types;
 use Illuminate\Support\Facades\Session;
 
 class BooksController extends Controller
 {
     public function showBooks()
     {
-        $test = books::all();
-        dd($test[1]->type());
-
-
-//        $booksData = DB::select('SELECT books.name as title, books.pageCount, types.name as type, authors.name as name, books.id_books FROM books JOIN authors on books.fk_authorsid = authors.id_authors JOIN types on books.fk_typesid = types.id_types');
-//        $typesData = DB::select('SELECT types.id_types, types.name FROM types');
-//        $namesData = DB::select('SELECT authors.id_authors, authors.name FROM authors');
-//        Session::put('activeNav', 'books');
-        //['booksData' => $booksData, 'typesData' => $typesData, 'namesData' => $namesData]
-        return view('books');
+        $booksData = books::all();
+        $typesData = types::all();
+        $authorData = authors::all();
+        Session::put('activeNav', 'books');
+        return view('books',['booksData' => $booksData, 'typesData' => $typesData, 'authorData' => $authorData]);
     }
 
     public function putBooks()
@@ -28,7 +24,14 @@ class BooksController extends Controller
             'name' => 'required|max:254',
             'pageCount' => 'required|max:254|integer'
         ]);
-        DB::insert( 'INSERT INTO `books` (`name`,`pageCount`,`fk_typesid`,`fk_authorsid`) VALUES (?,?,?,?)',[request('name'),request('pageCount'),request('fk_typesid'),request('fk_authorsid')]);
+
+        $books = new books();
+        $books->name = request('name');
+        $books->pageCount = request('pageCount');
+        $books->fk_typesid = request('fk_typesid');
+        $books->fk_authorsid = request('fk_authorsid');
+        $books->save();
+
         return redirect('/books');
     }
 
@@ -40,28 +43,23 @@ class BooksController extends Controller
 
     public function showForEditBooks($id)
     {
-        $queryFillInData = 'SELECT * FROM books WHERE id_books = '. $id;
-        $fillInData = DB::select($queryFillInData);
+        $fillInData = books::where('id_books','=',$id)->get();
+        $TypesNamesDropDownNoRepeat = types::where('id_types','!=',$fillInData[0]->fk_typesid)->get();
+        $AuthorsNamesDropDownNoRepeat = authors::where('id_authors','!=',$fillInData[0]->fk_authorsid)->get();
 
-        $queryFirstDropDown = "SELECT types.name as type, authors.name as name, types.id_types, authors.id_authors FROM books JOIN authors on books.fk_authorsid = authors.id_authors JOIN types on books.fk_typesid = types.id_types WHERE books.id_books = " . $id;
-        $firstDropDown = DB::select($queryFirstDropDown);
-
-        $queryAuthorsNamesDropDownNoRepeat = 'SELECT authors.id_authors, authors.name FROM authors WHERE NOT authors.id_authors = '. $firstDropDown[0] -> id_authors;
-        $AuthorsNamesDropDownNoRepeat = DB::select($queryAuthorsNamesDropDownNoRepeat);
-
-        $queryTypesNamesDropDownNoRepeat = "SELECT types.id_types, types.name FROM types WHERE NOT types.id_types = " . $firstDropDown[0] -> id_types;
-        $TypesNamesDropDownNoRepeat = DB::select($queryTypesNamesDropDownNoRepeat);
-        return view('booksEdit', ['fillInData' => $fillInData, 'TypesNamesDropDownNoRepeat' => $TypesNamesDropDownNoRepeat, 'AuthorsNamesDropDownNoRepeat' => $AuthorsNamesDropDownNoRepeat, 'firstDropDown' => $firstDropDown]);
+        return view('booksEdit', ['fillInData' => $fillInData, 'TypesNamesDropDownNoRepeat' => $TypesNamesDropDownNoRepeat, 'AuthorsNamesDropDownNoRepeat' => $AuthorsNamesDropDownNoRepeat]);
     }
 
     public function editBooks()
     {
         request()->validate([
             'name' => 'required|max:254',
-            'pageCount' => 'required|max:254|integer'
+            'pageCount' => 'required|integer'
         ]);
-        $querry = 'UPDATE books SET name = ' . "'" . request('name') . "'" . ",". "pageCount = " . "'" . request('pageCount') . "'" . ",". "fk_typesid = " . "'" . request('fk_typesid') . "'" . ",". "fk_authorsid =" . "'" . request('fk_authorsid') . "'" . " ". ' WHERE id_books = ' . request('id_books');
-        DB::update($querry);
+
+        $booksData = books::where('id_books', request('id_books'));
+        $booksData->update(['name' => request('name'), 'pageCount' => request('pageCount'), 'fk_typesid' => request('fk_typesid'), 'fk_authorsid' => request('fk_authorsid')]);
+
         return redirect('/books');
     }
 

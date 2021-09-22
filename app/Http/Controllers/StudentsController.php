@@ -23,8 +23,12 @@ class StudentsController extends Controller
             'studyProgramme' => 'required'
         ]);
 
-        DB::insert( 'INSERT INTO `students` (`name`,`birthdate`,`studyProgramme`) VALUES (?,?,?)',[request('name'),request('birthdate'),request('studyProgramme')]);
-        $authorsData = students::all();
+        $students = new students();
+        $students->name = request('name');
+        $students->birthdate = request('birthdate');
+        $students->studyProgramme = request('studyProgramme');
+        $students->save();
+
         Session::put('activeNav','students');
         return redirect('/students');
     }
@@ -37,8 +41,7 @@ class StudentsController extends Controller
 
     public function showForEditStudents($id)
     {
-        $querry = 'SELECT * FROM students WHERE id_students = '. $id;
-        $studentsData = DB::select($querry);
+        $studentsData = students::where('id_students','=',$id)->get();
         return view('studentsEdit',['studentsData' => $studentsData]);
     }
 
@@ -50,8 +53,9 @@ class StudentsController extends Controller
             'studyProgramme' => 'required'
         ]);
 
-        $querry = 'UPDATE students SET ' . 'name = ' . "'" . request('name') . "'," . ' birthdate = ' . "'" . request('birthdate') . "',"  . ' studyProgramme = ' . "'" . request('studyProgramme') . "' " . ' WHERE id_students = ' . request('id_students');
-        DB::update($querry);
+        $studentsData = students::where('id_students', request('id_students'));
+        $studentsData->update(['name' => request('name'),'birthdate' => request('birthdate'),'studyProgramme' => request('studyProgramme')]);
+
         return redirect('/students');
     }
 }

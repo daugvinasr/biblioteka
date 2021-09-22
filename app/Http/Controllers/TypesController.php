@@ -21,9 +21,10 @@ class TypesController extends Controller
             'name' => 'required|max:254'
         ]);
 
+        $types = new types();
+        $types->name = request('name');
+        $types->save();
 
-
-        DB::insert( 'INSERT INTO `types` (`name`) VALUES (?)',[request('name')]);
         Session::put('activeNav','types');
         return redirect('/types');
     }
@@ -36,8 +37,7 @@ class TypesController extends Controller
 
     public function showForEditTypes($id)
     {
-        $querry = 'SELECT * FROM types WHERE id_types = '. $id;
-        $typesData = DB::select($querry);
+        $typesData = types::where('id_types','=',$id)->get();
         return view('typesEdit',['typesData' => $typesData]);
     }
 
@@ -47,8 +47,8 @@ class TypesController extends Controller
             'name' => 'required|max:254'
         ]);
 
-        $querry = 'UPDATE types SET name = ' . "'" . request('name') . "'" . ' WHERE id_types = ' . request('id_types');
-        DB::update($querry);
+        $typesData = types::where('id_types', request('id_types'));
+        $typesData->update(['name' => request('name')]);
         return redirect('/types');
     }
 
