@@ -22,8 +22,6 @@ use App\Http\Controllers\TypesController;
 Route::get('/main', [ShowController::class, 'show']);
 Route::Post('/main', [ShowController::class, 'show']);
 
-Route::get('/types', [TypesController::class, 'showTypes']);
-
 Route::get('/authors', [AuthorsController::class, 'showAuthors']);
 Route::Post('/authors', [AuthorsController::class, 'putAuthors']);
 Route::get('/authors/{id}', [AuthorsController::class, 'deleteAuthors']);
@@ -47,3 +45,9 @@ Route::Post('/students', [StudentsController::class, 'putStudents']);
 Route::get('/students/{id}', [StudentsController::class, 'deleteStudents']);
 Route::get('/students/edit/{id}', [StudentsController::class, 'showForEditStudents']);
 Route::Post('/students/edit/{id}', [StudentsController::class, 'editStudents']);
+
+Route::get('/types', [TypesController::class, 'showTypes']);
+Route::Post('/types', [TypesController::class, 'putTypes']);
+Route::get('/types/{id}', [TypesController::class, 'deleteTypes']);
+Route::get('/types/edit/{id}', [TypesController::class, 'showForEditTypes']);
+Route::Post('/types/edit/{id}', [TypesController::class, 'editTypes']);
