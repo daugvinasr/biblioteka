@@ -35,14 +35,14 @@ class BooksController extends Controller
         $query = 'SELECT * FROM books WHERE id_books = '. $id;
         $booksData = DB::select($query);
 
-        $queryForRealTypeNames = "SELECT types.name as type, authors.name as name, types.id_types, authors.id_authors FROM books JOIN authors on books.fk_authorsid = authors.id_authors JOIN types on books.fk_typesid = types.id_types WHERE books.id_books = " . $id;
-        $realNames = DB::select($queryForRealTypeNames);
+        $queryCellNames = "SELECT types.name as type, authors.name as name, types.id_types, authors.id_authors FROM books JOIN authors on books.fk_authorsid = authors.id_authors JOIN types on books.fk_typesid = types.id_types WHERE books.id_books = " . $id;
+        $realNames = DB::select($queryCellNames);
 
-        $bbb = 'SELECT authors.id_authors, authors.name FROM authors WHERE NOT authors.id_authors = '. $realNames[0] -> id_authors;
-        $namesData = DB::select($bbb);
+        $queryAuthorsDropDownNoRepeat = 'SELECT authors.id_authors, authors.name FROM authors WHERE NOT authors.id_authors = '. $realNames[0] -> id_authors;
+        $namesData = DB::select($queryAuthorsDropDownNoRepeat);
 
-        $aa = "SELECT types.id_types, types.name FROM types WHERE NOT types.id_types = " . $realNames[0] -> id_types;
-        $typesData = DB::select($aa);
+        $queryTypesDropDownNoRepeat = "SELECT types.id_types, types.name FROM types WHERE NOT types.id_types = " . $realNames[0] -> id_types;
+        $typesData = DB::select($queryTypesDropDownNoRepeat);
         return view('booksEdit', ['booksData' => $booksData, 'typesData' => $typesData, 'namesData' => $namesData, 'realNames' => $realNames]);
     }
 
