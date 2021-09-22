@@ -15,16 +15,19 @@
                     <label class="" for="name">Vardas Pavardė:</label>
                     <p></p>
                     <input value="{{$studentsData[0] -> name}}" class="shadow-lg bg-gray-100" type="text" name="name">
+                    @error('name') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Gimimo diena:</label>
                     <p></p>
                     <input value="{{$studentsData[0] -> birthdate}}" class="shadow-lg bg-gray-100" type="text" name="birthdate">
+                    @error('birthdate') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Studiju programa:</label>
                     <p></p>
                     <input value="{{$studentsData[0] -> studyProgramme}}" class="shadow-lg bg-gray-100" type="text" name="studyProgramme">
+                    @error('studyProgramme') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <input class="shadow-lg bg-yellow-300 rounded-full py-1 px-2" type="submit" value="Patvirtinti">

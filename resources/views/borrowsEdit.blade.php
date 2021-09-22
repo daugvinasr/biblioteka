@@ -15,11 +15,13 @@
                     <label class="" for="name">Paėmimo data:</label>
                     <p></p>
                     <input value="{{$fillInData[0] -> takenDate}}" class="shadow-lg bg-gray-100" type="text" name="takenDate">
+                    @error('takenDate') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Pridavimo data</label>
                     <p></p>
                     <input value="{{$fillInData[0] -> broughtDate}}" class="shadow-lg bg-gray-100" type="text" name="broughtDate">
+                    @error('broughtDate') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <label>Paėmusio vardas pavardė:</label>

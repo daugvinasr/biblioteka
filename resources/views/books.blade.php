@@ -31,11 +31,13 @@
             <label>Pavadinimas:</label>
             <p></p>
             <input class="shadow-lg bg-gray-100" type="text" name="name">
+            @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label>Puslapių skaičius:</label>
             <p></p>
             <input class="shadow-lg bg-gray-100" type="text" name="pageCount">
+            @error('pageCount') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label>Tipas:</label>

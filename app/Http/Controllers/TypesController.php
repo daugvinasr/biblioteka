@@ -17,6 +17,12 @@ class TypesController extends Controller
 
     public function putTypes()
     {
+        request()->validate([
+            'name' => 'required|max:254'
+        ]);
+
+
+
         DB::insert( 'INSERT INTO `types` (`name`) VALUES (?)',[request('name')]);
         Session::put('activeNav','types');
         return redirect('/types');
@@ -37,6 +43,10 @@ class TypesController extends Controller
 
     public function editTypes()
     {
+        request()->validate([
+            'name' => 'required|max:254'
+        ]);
+
         $querry = 'UPDATE types SET name = ' . "'" . request('name') . "'" . ' WHERE id_types = ' . request('id_types');
         DB::update($querry);
         return redirect('/types');

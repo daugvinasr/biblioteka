@@ -15,11 +15,14 @@
                     <label class="" for="name">Pavadinimas:</label>
                     <p></p>
                     <input value="{{$fillInData[0] -> name}}" class="shadow-lg bg-gray-100" type="text" name="name">
+                    @error('name') {{$message}} @enderror
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Puslapių Skaičius:</label>
                     <p></p>
                     <input value="{{$fillInData[0] -> pageCount}}" class="shadow-lg bg-gray-100" type="text" name="pageCount">
+                    @error('pageCount') {{$message}} @enderror
+
                 </div>
                 <div class="p-2">
                     <label>Tipas:</label>

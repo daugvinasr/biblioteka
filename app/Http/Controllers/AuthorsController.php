@@ -18,6 +18,9 @@ class AuthorsController extends Controller
 
     public function putAuthors()
     {
+        request()->validate([
+            'name' => 'required|max:254'
+        ]);
         DB::insert( 'INSERT INTO `authors` (`name`) VALUES (?)',[request('name')]);
         $authorsData = authors::all();
         Session::put('activeNav','authors');
@@ -39,6 +42,9 @@ class AuthorsController extends Controller
 
     public function editAuthors()
     {
+        request()->validate([
+            'name' => 'required|max:254'
+        ]);
         $querry = 'UPDATE authors SET name = ' . "'" . request('name') . "'" . ' WHERE id_authors = ' . request('id_authors');
         DB::update($querry);
         return redirect('/authors');

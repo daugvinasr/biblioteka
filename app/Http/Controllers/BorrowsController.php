@@ -19,6 +19,11 @@ class BorrowsController extends Controller
 
     public function putBorrows()
     {
+        request()->validate([
+            'takenDate' => 'required|date',
+            'broughtDate' => 'required|date'
+        ]);
+
         DB::insert( 'INSERT INTO `borrows` (`takenDate`,`broughtDate`,`fk_studentsid`,`fk_booksid`) VALUES (?,?,?,?)',[request('takenDate'),request('broughtDate'),request('fk_studentsid'),request('fk_booksid')]);
         return redirect('/borrows');
     }
@@ -48,6 +53,10 @@ class BorrowsController extends Controller
 
     public function editBorrows()
     {
+        request()->validate([
+            'takenDate' => 'required|date',
+            'broughtDate' => 'required|date'
+        ]);
         $querry = 'UPDATE borrows SET takenDate = ' . "'" . request('takenDate') . "'" . ",". "broughtDate = " . "'" . request('broughtDate') . "'" . ",". "fk_studentsid = " . "'" . request('fk_studentsid') . "'" . ",". "fk_booksid =" . "'" . request('fk_booksid') . "'" . " ". ' WHERE id_borrows = ' . request('id_borrows');
         DB::update($querry);
         return redirect('/borrows');

@@ -17,6 +17,12 @@ class StudentsController extends Controller
 
     public function putStudents()
     {
+        request()->validate([
+            'name' => 'required',
+            'birthdate' => 'required|date',
+            'studyProgramme' => 'required'
+        ]);
+
         DB::insert( 'INSERT INTO `students` (`name`,`birthdate`,`studyProgramme`) VALUES (?,?,?)',[request('name'),request('birthdate'),request('studyProgramme')]);
         $authorsData = students::all();
         Session::put('activeNav','students');
@@ -38,6 +44,12 @@ class StudentsController extends Controller
 
     public function editStudents()
     {
+        request()->validate([
+            'name' => 'required',
+            'birthdate' => 'required|date',
+            'studyProgramme' => 'required'
+        ]);
+
         $querry = 'UPDATE students SET ' . 'name = ' . "'" . request('name') . "'," . ' birthdate = ' . "'" . request('birthdate') . "',"  . ' studyProgramme = ' . "'" . request('studyProgramme') . "' " . ' WHERE id_students = ' . request('id_students');
         DB::update($querry);
         return redirect('/students');

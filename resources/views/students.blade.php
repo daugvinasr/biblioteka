@@ -37,16 +37,19 @@
             <label class="" for="name">Vardas Pavardė:</label>
             <p></p>
             <input class="shadow-lg bg-gray-100" type="text" name="name">
+            @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label class="" for="name">Gimimo data:</label>
             <p></p>
             <input class="shadow-lg bg-gray-100" type="text" name="birthdate">
+            @error('birthdate') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label class="" for="name">Studiju programa:</label>
             <p></p>
             <input class="shadow-lg bg-gray-100" type="text" name="studyProgramme">
+            @error('studyProgramme') {{$message}} @enderror
         </div>
         <div class="p-2">
             <input class="shadow-lg bg-yellow-300 rounded-full py-1 px-2" type="submit" value="Pridėti">
