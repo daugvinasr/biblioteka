@@ -9,24 +9,24 @@
                 <div class="p-2">
                     <label class="" for="name">ID:</label>
                     <p></p>
-                    <input value="{{$booksData[0] -> id_books}}" class="shadow-lg bg-gray-100" type="text" name="id_books" readonly>
+                    <input value="{{$fillInData[0] -> id_books}}" class="shadow-lg bg-gray-100" type="text" name="id_books" readonly>
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Pavadinimas:</label>
                     <p></p>
-                    <input value="{{$booksData[0] -> name}}" class="shadow-lg bg-gray-100" type="text" name="name">
+                    <input value="{{$fillInData[0] -> name}}" class="shadow-lg bg-gray-100" type="text" name="name">
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Puslapių Skaičius:</label>
                     <p></p>
-                    <input value="{{$booksData[0] -> pageCount}}" class="shadow-lg bg-gray-100" type="text" name="pageCount">
+                    <input value="{{$fillInData[0] -> pageCount}}" class="shadow-lg bg-gray-100" type="text" name="pageCount">
                 </div>
                 <div class="p-2">
                     <label>Tipas:</label>
                     <p></p>
                     <select name="fk_typesid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$booksData[0] -> fk_typesid}}">{{$realNames[0] -> type}}</option>
-                        @foreach($typesData as $type)
+                        <option value="{{$fillInData[0] -> fk_typesid}}">{{$firstDropDown[0] -> type}}</option>
+                        @foreach($TypesNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_types}}">{{$type->name}}</option>
                         @endforeach
                     </select>
@@ -36,8 +36,8 @@
                     <label>Autorius:</label>
                     <p></p>
                     <select name="fk_authorsid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$booksData[0] -> fk_authorsid}}">{{$realNames[0] -> name}}</option>
-                        @foreach($namesData as $type)
+                        <option value="{{$fillInData[0] -> fk_authorsid}}">{{$firstDropDown[0] -> name}}</option>
+                        @foreach($AuthorsNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_authors}}">{{$type->name}}</option>
                         @endforeach
                     </select>

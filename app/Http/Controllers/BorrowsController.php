@@ -31,24 +31,24 @@ class BorrowsController extends Controller
 
     public function showForEditBorrows($id)
     {
-        $query = 'SELECT * FROM borrows WHERE id_borrows = '. $id;
-        $borrowsData = DB::select($query);
+        $queryFillInData = 'SELECT * FROM borrows WHERE id_borrows = '. $id;
+        $fillInData = DB::select($queryFillInData);
 
+        $queryFirstDropDown = "SELECT students.name as name, books.name as title, students.id_students, books.id_books FROM borrows JOIN students on borrows.fk_studentsid = students.id_students JOIN books on borrows.fk_booksid = books.id_books WHERE borrows.id_borrows = " . $id;
+        $firstDropDown= DB::select($queryFirstDropDown);
 
-        $queryForRealStudentsNames = "SELECT students.name as name, books.name as title, students.id_students, books.id_books FROM borrows JOIN students on borrows.fk_studentsid = students.id_students JOIN books on borrows.fk_booksid = books.id_books WHERE borrows.id_borrows = " . $id;
-        $realStudentsNames = DB::select($queryForRealStudentsNames);
+        $queryBookNamesDropDownNoRepeat = 'SELECT books.id_books, books.name FROM books WHERE NOT books.id_books = '. $firstDropDown[0] -> id_books;
+        $BookNamesDropDownNoRepeat = DB::select($queryBookNamesDropDownNoRepeat);
 
-        $queryForRealAuthorsNames = 'SELECT books.id_books, books.name FROM books WHERE NOT books.id_books = '. $realStudentsNames[0] -> id_books;
-        $namesData = DB::select($queryForRealAuthorsNames);
+        $queryStudentNamesDropDownNoRepeat = "SELECT students.id_students, students.name FROM students WHERE NOT students.id_students = " . $firstDropDown[0] -> id_students;
+        $StudentNamesDropDownNoRepeat = DB::select($queryStudentNamesDropDownNoRepeat);
 
-        $aa = "SELECT students.id_students, students.name FROM students WHERE NOT students.id_students = " . $realStudentsNames[0] -> id_students;
-        $typesData = DB::select($aa);
-        return view('borrowsEdit', ['borrowsData' => $borrowsData, 'typesData' => $typesData, 'namesData' => $namesData, 'realStudentsNames' => $realStudentsNames]);
+        return view('borrowsEdit', ['fillInData' => $fillInData, 'StudentNamesDropDownNoRepeat' => $StudentNamesDropDownNoRepeat, 'BookNamesDropDownNoRepeat' => $BookNamesDropDownNoRepeat, 'firstDropDown' => $firstDropDown]);
     }
 
     public function editBorrows()
     {
-        $querry = 'UPDATE books SET name = ' . "'" . request('name') . "'" . ",". "pageCount = " . "'" . request('pageCount') . "'" . ",". "fk_typesid = " . "'" . request('fk_typesid') . "'" . ",". "fk_authorsid =" . "'" . request('fk_authorsid') . "'" . " ". ' WHERE id_books = ' . request('id_books');
+        $querry = 'UPDATE borrows SET takenDate = ' . "'" . request('takenDate') . "'" . ",". "broughtDate = " . "'" . request('broughtDate') . "'" . ",". "fk_studentsid = " . "'" . request('fk_studentsid') . "'" . ",". "fk_booksid =" . "'" . request('fk_booksid') . "'" . " ". ' WHERE id_borrows = ' . request('id_borrows');
         DB::update($querry);
         return redirect('/borrows');
     }

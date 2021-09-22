@@ -9,24 +9,24 @@
                 <div class="p-2">
                     <label class="" for="name">ID:</label>
                     <p></p>
-                    <input value="{{$borrowsData[0] -> id_borrows}}" class="shadow-lg bg-gray-100" type="text" name="id_books" readonly>
+                    <input value="{{$fillInData[0] -> id_borrows}}" class="shadow-lg bg-gray-100" type="text" name="id_borrows" readonly>
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Paėmimo data:</label>
                     <p></p>
-                    <input value="{{$borrowsData[0] -> takenDate}}" class="shadow-lg bg-gray-100" type="text" name="name">
+                    <input value="{{$fillInData[0] -> takenDate}}" class="shadow-lg bg-gray-100" type="text" name="takenDate">
                 </div>
                 <div class="p-2">
                     <label class="" for="name">Pridavimo data</label>
                     <p></p>
-                    <input value="{{$borrowsData[0] -> broughtDate}}" class="shadow-lg bg-gray-100" type="text" name="pageCount">
+                    <input value="{{$fillInData[0] -> broughtDate}}" class="shadow-lg bg-gray-100" type="text" name="broughtDate">
                 </div>
                 <div class="p-2">
                     <label>Paėmusio vardas pavardė:</label>
                     <p></p>
-                    <select name="fk_typesid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$borrowsData[0] -> fk_studentsid}}">{{$realStudentsNames[0] -> name}}</option>
-                        @foreach($typesData as $type)
+                    <select name="fk_studentsid" id="" class="shadow-lg bg-gray-100">
+                        <option value="{{$fillInData[0] -> fk_studentsid}}">{{$firstDropDown[0] -> name}}</option>
+                        @foreach($StudentNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_students}}">{{$type->name}}</option>
                         @endforeach
                     </select>
@@ -35,9 +35,9 @@
                 <div class="p-2">
                     <label>Knygos pavadinimas:</label>
                     <p></p>
-                    <select name="fk_authorsid" id="" class="shadow-lg bg-gray-100">
-                        <option value="{{$borrowsData[0] -> fk_booksid}}">{{$realStudentsNames[0] -> title}}</option>
-                        @foreach($namesData as $type)
+                    <select name="fk_booksid" id="" class="shadow-lg bg-gray-100">
+                        <option value="{{$fillInData[0] -> fk_booksid}}">{{$firstDropDown[0] -> title}}</option>
+                        @foreach($BookNamesDropDownNoRepeat as $type)
                             <option value="{{$type->id_books}}">{{$type->name}}</option>
                         @endforeach
                     </select>
