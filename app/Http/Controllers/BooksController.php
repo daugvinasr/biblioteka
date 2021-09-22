@@ -11,7 +11,7 @@ class BooksController extends Controller
 {
     public function showBooks()
     {
-        $booksData = books::all();
+        $booksData = books::paginate(10);
         $typesData = types::all();
         $authorData = authors::all();
         Session::put('activeNav', 'books');

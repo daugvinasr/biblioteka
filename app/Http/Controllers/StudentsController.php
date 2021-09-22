@@ -10,7 +10,7 @@ class StudentsController extends Controller
 {
     public function showStudents()
     {
-        $studentsData = students::paginate(11);
+        $studentsData = students::paginate(10);
         Session::put('activeNav','students');
         return view('students', ['studentsData' => $studentsData]);
     }

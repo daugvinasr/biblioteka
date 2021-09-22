@@ -12,7 +12,7 @@ class BorrowsController extends Controller
     public function showBorrows()
     {
 
-        $borrowsData = borrows::all();
+        $borrowsData = borrows::paginate(10);
         $studentsData = students::all();
         $booksData = books::all();
 

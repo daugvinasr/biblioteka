@@ -9,7 +9,7 @@ class AuthorsController extends Controller
 {
     public function showAuthors()
     {
-        $authorsData = authors::all();
+        $authorsData = authors::paginate(10);
 
         Session::put('activeNav','authors');
         return view('authors', ['authorsData' => $authorsData]);

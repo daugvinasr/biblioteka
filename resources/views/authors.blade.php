@@ -17,6 +17,12 @@
         </td>
     </tr>
     @endforeach
+    <div style="padding: 15px">
+        {{ $authorsData -> links() }}
+        <style>
+            .w-5{height: 10px;}
+        </style>
+    </div>
 
 @endsection
 
@@ -28,7 +34,7 @@
         <div class="p-2">
             <label class="" for="name">Vardas Pavardė:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="name">
+            <input class="shadow-lg bg-gray-100 px-5" type="text" name="name">
             @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">

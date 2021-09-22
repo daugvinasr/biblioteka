@@ -10,7 +10,7 @@ class TypesController extends Controller
 {
     public function showTypes()
     {
-        $typesData = types::all();
+        $typesData = types::paginate(10);
         Session::put('activeNav','types');
         return view('types', ['typesData' => $typesData]);
     }

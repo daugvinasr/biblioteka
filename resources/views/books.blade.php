@@ -21,6 +21,12 @@
             </td>
         </tr>
     @endforeach
+    <div style="padding: 15px">
+        {{ $booksData -> links() }}
+        <style>
+            .w-5{height: 10px;}
+        </style>
+    </div>
 @endsection
 
 @section('inputFields')
@@ -30,13 +36,13 @@
         <div class="p-2">
             <label>Pavadinimas:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="name">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="name">
             @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label>Puslapių skaičius:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="pageCount">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="pageCount">
             @error('pageCount') {{$message}} @enderror
         </div>
         <div class="p-2">

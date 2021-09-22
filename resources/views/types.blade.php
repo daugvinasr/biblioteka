@@ -16,8 +16,13 @@
                 <a class="shadow-lg bg-yellow-300 rounded-full py-2 px-2" href="types/edit/{{$type->id_types}}">REDAGUOTI</a>
             </td>
         </tr>
-
     @endforeach
+    <div style="padding: 15px">
+        {{ $typesData -> links() }}
+        <style>
+            .w-5{height: 10px;}
+        </style>
+    </div>
 @endsection
 
 @section('inputFields')
@@ -27,7 +32,7 @@
         <div class="p-2">
             <label class="" for="name">Tipo pavadinimas:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="name">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="name">
             @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">

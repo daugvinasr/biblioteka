@@ -21,6 +21,12 @@
             </td>
         </tr>
     @endforeach
+    <div style="padding: 15px">
+        {{ $borrowsData -> links() }}
+        <style>
+            .w-5{height: 10px;}
+        </style>
+    </div>
 @endsection
 
 @section('inputFields')
@@ -30,13 +36,13 @@
         <div class="p-2">
             <label>Paėmimo data:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="takenDate">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="takenDate">
             @error('takenDate') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label>Pridavimo data:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="broughtDate">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="broughtDate">
             @error('broughtDate') {{$message}} @enderror
         </div>
         <div class="p-2">

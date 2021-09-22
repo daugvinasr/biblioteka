@@ -36,19 +36,19 @@
         <div class="p-2">
             <label class="" for="name">Vardas Pavardė:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="name">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="name">
             @error('name') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label class="" for="name">Gimimo data:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="birthdate">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="birthdate">
             @error('birthdate') {{$message}} @enderror
         </div>
         <div class="p-2">
             <label class="" for="name">Studiju programa:</label>
             <p></p>
-            <input class="shadow-lg bg-gray-100" type="text" name="studyProgramme">
+            <input class="shadow-lg bg-gray-100 px-4" type="text" name="studyProgramme">
             @error('studyProgramme') {{$message}} @enderror
         </div>
         <div class="p-2">
