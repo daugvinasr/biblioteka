@@ -10,4 +10,10 @@ class students extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function borrows()
+    {
+        return $this->hasOne(borrows::class);
+    }
+
 }

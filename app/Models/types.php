@@ -10,4 +10,11 @@ class types extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+
+    public function books()
+    {
+        return $this->hasOne(books::class);
+    }
+
 }
