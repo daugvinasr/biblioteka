@@ -7,6 +7,8 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\BorrowsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TypesController;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +53,9 @@ Route::Post('/types', [TypesController::class, 'putTypes']);
 Route::get('/types/{id}', [TypesController::class, 'deleteTypes']);
 Route::get('/types/edit/{id}', [TypesController::class, 'showForEditTypes']);
 Route::Post('/types/edit/{id}', [TypesController::class, 'editTypes']);
+
+Route::get('email', function () {
+    Mail::to("pogchamp@pog.lt")->send(new WelcomeMail());
+    return new WelcomeMail();
+});
+
