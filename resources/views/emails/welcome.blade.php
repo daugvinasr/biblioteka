@@ -41,8 +41,7 @@ Hang on a second.
 {{--@endcomponent--}}
 
 Thanks,<br>
-Daugvinas<br>
-
+{{$data->name}}
 {{ now() }}
 @endcomponent
 

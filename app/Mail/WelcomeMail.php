@@ -11,7 +11,7 @@ class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'gg no re';
+    public $subject = 'Autorius';
 
     /**
      * Create a new message instance.
@@ -30,6 +30,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome');
+        $data = \App\Models\authors::inRandomOrder()->first();
+        return $this->markdown('emails.welcome', ['data' => $data]);
     }
 }

@@ -11,11 +11,9 @@ class BorrowsController extends Controller
 {
     public function showBorrows()
     {
-
         $borrowsData = borrows::paginate(10);
         $studentsData = students::all();
         $booksData = books::all();
-
 
         Session::put('activeNav','borrows');
         return view('borrows', ['borrowsData' => $borrowsData,'studentsData' => $studentsData, 'booksData' => $booksData]);
@@ -24,8 +22,8 @@ class BorrowsController extends Controller
     public function putBorrows()
     {
         request()->validate([
-            'takenDate' => 'required|date',
-            'broughtDate' => 'required|date'
+            'takenDate' => 'required|date|before:broughtDate',
+            'broughtDate' => 'required|date|after:takenDate'
         ]);
 
         $borrows = new borrows();

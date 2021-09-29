@@ -60,3 +60,5 @@ Route::get('email', function () {
     return redirect('/main');
 });
 
+
+
