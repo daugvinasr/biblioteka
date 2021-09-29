@@ -55,7 +55,8 @@ Route::get('/types/edit/{id}', [TypesController::class, 'showForEditTypes']);
 Route::Post('/types/edit/{id}', [TypesController::class, 'editTypes']);
 
 Route::get('email', function () {
-    Mail::to("pogchamp@pog.lt")->send(new WelcomeMail());
-    return new WelcomeMail();
+    Mail::to("test@test")->send(new WelcomeMail());
+//    return new WelcomeMail();
+    return redirect('/main');
 });
 

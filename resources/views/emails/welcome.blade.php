@@ -41,5 +41,9 @@ Hang on a second.
 {{--@endcomponent--}}
 
 Thanks,<br>
-Daugvinas
+Daugvinas<br>
+
+{{ now() }}
 @endcomponent
+
+

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\authors;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class AuthorsController extends Controller
@@ -51,9 +53,4 @@ class AuthorsController extends Controller
         $authorsData->update(['name' => request('name')]);
         return redirect('/authors');
     }
-
-
-
-
-
 }

@@ -11,6 +11,8 @@ class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject = 'gg no re';
+
     /**
      * Create a new message instance.
      *
